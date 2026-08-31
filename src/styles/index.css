@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Le thème est piloté par [data-theme] sur <html>, pas par la media query :
+   ThemeProvider résout « system » au démarrage puis écrit l'attribut. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --color-engine: var(--engine);
+
+  --color-sq-light: var(--sq-light);
+  --color-sq-dark: var(--sq-dark);
+
+  --color-nag-brilliant: var(--nag-brilliant);
+  --color-nag-good: var(--nag-good);
+  --color-nag-interesting: var(--nag-interesting);
+  --color-nag-dubious: var(--nag-dubious);
+  --color-nag-mistake: var(--nag-mistake);
+  --color-nag-blunder: var(--nag-blunder);
+
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Karla', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}

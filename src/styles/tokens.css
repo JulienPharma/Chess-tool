@@ -1,0 +1,47 @@
+/* Identité « bois & parchemin » — palette et typos figées dans CLAUDE.md.
+   Les valeurs vivent dans des variables CSS pour basculer light/dark sans
+   dupliquer les utilitaires Tailwind. */
+
+:root {
+  color-scheme: light;
+
+  --sand: #f4efe6;
+  --ink: #171310;
+  --panel: #fdfaf3;
+  --accent: #a86f14;
+  --green: #3e7d4e;
+  --red: #a33b2e;
+  --engine: #3f6fb0;
+
+  --bg: var(--sand);
+  --fg: var(--ink);
+  --surface: var(--panel);
+  --border: color-mix(in srgb, var(--ink) 14%, transparent);
+  --muted: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --accent: #d9a03f;
+
+  --bg: var(--ink);
+  --fg: var(--sand);
+  --surface: #211c17;
+  --border: color-mix(in srgb, var(--sand) 16%, transparent);
+  --muted: color-mix(in srgb, var(--sand) 60%, transparent);
+}
+
+/* Cases de l'échiquier : constantes, elles ne suivent pas le thème. */
+:root {
+  --sq-light: #f0d9b5;
+  --sq-dark: #b58863;
+
+  /* Couleurs d'annotations (CLAUDE.md § Design) */
+  --nag-brilliant: #14957e; /* !!  */
+  --nag-good: #4d8f3f; /* !   */
+  --nag-interesting: #af52c6; /* !?  */
+  --nag-dubious: #e0912a; /* ?!  */
+  --nag-mistake: #d0342c; /* ?   */
+  --nag-blunder: #9c1207; /* ??  */
+}
