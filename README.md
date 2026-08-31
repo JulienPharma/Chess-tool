@@ -37,6 +37,26 @@ Migrations dans `supabase/migrations/`, déjà appliquées.
 > ⚠️ Ne pas confondre avec `zsfdbpoqwobewwghaqhv`, qui est le projet
 > PharmaTalent de production. Aucune donnée d'échecs ne doit y aller.
 
+## Déploiement Vercel
+
+Projet `chess-tool` (équipe `pharma-talent-ai`). Le build est piloté par
+`vercel.json` : framework `vite`, sortie dans `dist/`.
+
+Variables d'environnement à définir dans Project Settings → Environment
+Variables, pour **Production, Preview et Development** :
+
+| nom | valeur |
+|---|---|
+| `VITE_SUPABASE_URL` | `https://sponqvqqfcedkkfvasfw.supabase.co` |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_dJVYMQug0aV4Hh6SaFTWIw_6aW5Gjd-` |
+
+⚠️ Le préfixe `VITE_` est **obligatoire** : Vite n'expose au bundle client que
+les variables ainsi préfixées. Sans lui, `import.meta.env` renvoie `undefined`
+et l'app affiche l'écran « Configuration incomplète ».
+
+Penser aussi à ajouter l'URL de déploiement dans Supabase → Authentication →
+URL Configuration → Redirect URLs, sinon le magic link renvoie sur localhost.
+
 ## Manquant
 
 - `reference/le-labo-v1.html` — code de référence v1, nécessaire en Phase 3
