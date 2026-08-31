@@ -26,7 +26,7 @@ npm run dev                  # http://localhost:5173/debug
 - Vite + React 19 + TS strict + Tailwind 4 + vitest + react-router
 - Stockfish 18 lite single-thread en Web Worker same-origin, page `/debug`
 - `src/lib/repertoire.ts` : chargement, types, parcours, `buildTree` — 21 tests
-- Supabase : 5 tables, RLS `owner_id = auth.uid()`, auth magic-link
+- Supabase : 5 tables, RLS `owner_id = auth.uid()`, auth e-mail + mot de passe
 - Design tokens « bois & parchemin », thèmes clair et sombre
 
 ## Base de données
@@ -54,8 +54,20 @@ Variables, pour **Production, Preview et Development** :
 les variables ainsi préfixées. Sans lui, `import.meta.env` renvoie `undefined`
 et l'app affiche l'écran « Configuration incomplète ».
 
-Penser aussi à ajouter l'URL de déploiement dans Supabase → Authentication →
-URL Configuration → Redirect URLs, sinon le magic link renvoie sur localhost.
+## Authentification
+
+E-mail + mot de passe, **aucun e-mail envoyé** (le SMTP par défaut de Supabase
+plafonne à quelques messages par heure).
+
+Mise en place, une seule fois :
+
+1. Supabase → Authentication → Providers → Email → décocher **Confirm email**
+2. Dans l'app, « Créer le compte (première fois) » avec e-mail + mot de passe
+3. Supabase → Authentication → Providers → Email → décocher **Allow new users
+   to sign up**
+
+Mot de passe oublié : le changer depuis Supabase → Authentication → Users.
+Pas de « reset par e-mail », pour la même raison de quota.
 
 ## Manquant
 
